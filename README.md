@@ -22,3 +22,13 @@ npm run build
 ```
 
 Zip the contents of `build/` and upload to the server.
+
+
+## Update 2025:  
+The app is quite old at this point and there are multiple dependency conflicts.
+Use NVM to downgrade node version to 16
+```
+nvm list
+nvm use 16.20.0
+npm start
+```
