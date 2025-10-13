@@ -3,7 +3,8 @@ const DEFAULT_STATE = {
   goalClickOrder: [],
   monitoringStatuses: ['active', 'continuous', 'non-active'],
   indicatorCategory: '',
-  organizationName: ''
+  organizationName: '',
+  programName: ''
 };
 
 const filters = (state = DEFAULT_STATE, action) => {

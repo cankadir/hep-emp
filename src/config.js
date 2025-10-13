@@ -130,7 +130,7 @@ export const monitoringStatuses = [
     value: 'continuous'
   },
   {
-    label: 'Non-Active',
+    label: 'Historical / Non-Active',
     filterValue: 'Historic/Nonactive',
     layers: ['monitoring-points-non-active-icons'],
     defaultMapIcon: 'triangle-default',

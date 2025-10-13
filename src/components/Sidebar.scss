@@ -5,18 +5,19 @@ $sidebar-spacing-small: 20px;
 $sidebar-border-color: rgba(123, 117, 107, 0.5);
 
 .Sidebar {
-  background-color: #E9E9E2;
+  background-color: #FEFEFC;
   flex: 1 1 auto;
   float: left;
   height: 100vh;
   max-width: 550px;
   width: 34%;
+  border-right: 1px solid #666;
 }
 
 .Sidebar-main {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 95px);
+  height: 100%;
   padding: 0 $sidebar-spacing;
 }
 

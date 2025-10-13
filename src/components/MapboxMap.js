@@ -30,7 +30,8 @@ class Map extends Component {
       this.props.filters.goals !== nextProps.filters.goals ||
       this.props.filters.indicatorCategory !== nextProps.filters.indicatorCategory ||
       this.props.filters.monitoringStatuses !== nextProps.filters.monitoringStatuses ||
-      this.props.filters.organizationName !== nextProps.filters.organizationName
+      this.props.filters.organizationName !== nextProps.filters.organizationName ||
+      this.props.filters.programName !== nextProps.filters.programName
     );
 
     if (filtersChanged) {
@@ -45,15 +46,20 @@ class Map extends Component {
     });
 
     const selectedGoals = Object.keys(nextFilters.goals).filter(key => nextFilters.goals[key]);
+    console.log( "Filters" , nextFilters );
 
     // Filter by prorgram
     const programs = filterPrograms(
       this.props.programs,
       selectedGoals,
       nextFilters.indicatorCategory ? [nextFilters.indicatorCategory.value] : [],
-      nextFilters.organizationName ? [nextFilters.organizationName.value] : []
+      nextFilters.organizationName ? [nextFilters.organizationName.value] : [],
+      nextFilters.programName ? [nextFilters.programName.value]: [] ,
     );
 
+    console.log( "handle update 1:" ,programs )
+
+  
     // Update layer styles by goal
     if (selectedGoals.length > 0) {
       const fullSelectedGoals = goals.filter(g => selectedGoals.indexOf(g.filterValue) >= 0);
@@ -158,7 +164,7 @@ class Map extends Component {
     const continuousIconStyle = ['match', ['get', 'ProgID']];
     const defaultContinuousMapIcon = monitoringStatuses.filter(s => s.label === 'Continuous')[0].defaultMapIcon;
     const nonActiveIconStyle = ['match', ['get', 'ProgID']];
-    const defaultNonActiveMapIcon = monitoringStatuses.filter(s => s.label === 'Non-Active')[0].defaultMapIcon;
+    const defaultNonActiveMapIcon = monitoringStatuses.filter(s => s.label === 'Historical / Non-Active')[0].defaultMapIcon;
     Object.keys(groupedPrograms).forEach(group => {
       if (groupedPrograms[group].length === 0) return;
 
@@ -193,7 +199,7 @@ class Map extends Component {
     const defaultContinuousMapIcon = monitoringStatuses.filter(s => s.label === 'Continuous')[0].defaultMapIcon;
     this.map.setLayoutProperty(mapbox.layers.monitoringPointsContinuous.name, 'icon-image', defaultContinuousMapIcon);
 
-    const defaultNonActiveMapIcon = monitoringStatuses.filter(s => s.label === 'Non-Active')[0].defaultMapIcon;
+    const defaultNonActiveMapIcon = monitoringStatuses.filter(s => s.label === 'Historical / Non-Active')[0].defaultMapIcon;
     this.map.setLayoutProperty(mapbox.layers.monitoringPointsNonActive.name, 'icon-image', defaultNonActiveMapIcon);
   }
 

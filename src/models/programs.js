@@ -60,18 +60,24 @@ export function getProgramsByGoal(programs, goal) {
   return programs.filter(program => program.goals.indexOf(goal) >= 0);
 }
 
-export function filterPrograms(programs, goals, indicators, organizations) {
-  return programs.filter(program => {
+export function filterPrograms(programs, goals, indicators, organizations, programNames = []) {
+
+  const filteredPrograms = programs.filter(program => {
     if (goals.length && program.goals.filter(goal => goals.indexOf(goal) >= 0).length === 0) {
       return false;
     }
-    if (indicators.length && program.indicators.filter(indicator => indicators.indexOf(indicator) >= 0).length === 0) {
+    if (indicators && indicators.length && program.indicators.filter(indicator => indicators.indexOf(indicator) >= 0).length === 0) {
       return false;
     }
     if (organizations.length && program.organizations.filter(organization => organizations.indexOf(organization) >= 0).length === 0) {
       return false;
     }
+    if (programNames.length && !programNames.includes(program.ProgName)) {
+      return false;
+    }
 
     return true;
   });
+
+  return filteredPrograms;
 }

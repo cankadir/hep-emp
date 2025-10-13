@@ -18,14 +18,14 @@ class Sidebar extends Component {
   render() {
     return (
       <div className='Sidebar'>
-        <div className='Sidebar-logos'>
+        {/* <div className='Sidebar-logos'>
           <a className='Sidebar-logo' href={hepLink} target='_blank' rel='noopener noreferrer'>
             <img src={logoHep} alt='NY/NJ Harbor & Estuary Project' />
           </a>
           <a className='Sidebar-logo' href={hrfLink} target='_blank' rel='noopener noreferrer'>
             <img src={logoHrf} alt='Hudson River Foundation' />
           </a>
-        </div>
+        </div> */}
         <div className='Sidebar-main'>
           <h1 className='Sidebar-header'>
             <div className='Sidebar-header-organization'>{organizationName}</div>

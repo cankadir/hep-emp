@@ -2,11 +2,11 @@
 
 The legend to the left of the map is your workspace. This is where you can toggle on and off between HEP goals and monitoring status, with the ability to have more than one goal and/or monitoring status selected. By toggling these sections, the map will display points and polygons in the color associated to the goal and the points on the map will change shape (per the legend) based on the status of the program and the use of this site location. Active monitoring indicates a program’s on going monitoring efforts. Continuous monitoring indicates daily monitoring with limited time lapse between samples. Non-active monitoring indicates a site no longer in an active program but contains historic data. The map layers are transparent so darker colors indicate a higher density of monitoring sites.
 
-![](images/about-map-legend.jpg)
+![](hep-emp/images/about-map-legend.jpg)
 
 Once a goal is selected, the indicator category will display all options available within the selected goal to narrow your search. As you select an indicator category, the map will refresh to narrow your search to sites that only monitor for the specific indicator category chosen. 
 
-![](images/about-map-category.jpg)
+![](hep-emp/images/about-map-category.jpg)
 
 Below is a complete table of the goal, indicator category, and indicator that you will find while exploring the map. This table is also accessible on the bottom right corner of the screen and accessible at any time.
 
@@ -28,7 +28,7 @@ Below is a complete table of the goal, indicator category, and indicator that yo
 | Water Quality | Pathogens | Enterococcus, Fecal coliform |
 You may also narrow your search by organization name. This field will allow you to choose from HEP and its many partners that conduct monitoring programs in the Hudson Raritan Estuary based on the indicator category or goal selected. For example, selecting “Water Quality” and the indicator category “Nutrients,” the organization name search will display organizations that are conducting water quality programs and monitor for nutrients. 
 
-![](images/about-map-organization.jpg)
+![](hep-emp/images/about-map-organization.jpg)
 
 Below is a complete table of the indicatory category and the organization names that you will find while exploring the map as a reference.
 
@@ -49,10 +49,10 @@ Below is a complete table of the indicatory category and the organization names 
 
 Within the Hudson Raritan Estuary, you will be able to zoom in and out to view the points displayed on the map. You can hover over a point or polygon and a small text box will appear identifying the point by indicatory category and organization name.
 
-![](images/about-map-popup.jpg)
+![](hep-emp/images/about-map-popup.jpg)
 
 You can click on the point and a description of the program will appear in the left workspace below the legend. Included in the description is the program name, objective, quality assurance protocols (whether a QAPP, certified lab analysis, or standardized protocol has been adopted), spatial extent (monitored area), temporal extent (length of the program’s data collection), sampling frequency, reference (hyperlink to access downloadable data), and contact information.  
 
-![](images/about-map-popup-details.jpg)
+![](hep-emp/images/about-map-popup-details.jpg)
 
 This function is available at all times, regardless of whether or not you have toggled on or off the goals or monitoring status options. 

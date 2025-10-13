@@ -2,12 +2,14 @@ import classNames from 'classnames';
 import React, { Component } from 'react';
 import slug from 'slug';
 
-import { filterPrograms, uniqueIndicators, uniqueOrganizations } from '../models/programs';
+import { filterPrograms } from '../models/programs';
 import FilterSelect from './FilterSelect';
 import Tooltip from './Tooltip';
 import './Filters.scss';
 
 import { goals, monitoringStatuses } from '../config';
+
+import uniq from 'lodash.uniq';
 
 class Goal extends Component {
   constructor(props) {
@@ -107,7 +109,9 @@ class MonitoringStatus extends Component {
           onChange={onChange}
         />
         <label htmlFor={name}>
+          {/* Image */}
           <span className={classNames('monitoring-status-icon', `status-${name}`)}></span>
+          {/* Text */}
           {label}
         </label>
 
@@ -155,22 +159,41 @@ class Filters extends Component {
     const filteredMonitoringStatuses = filters.monitoringStatuses;
 
     const selectedGoals = Object.keys(filteredGoals).filter(key => filteredGoals[key]);
-    const filteredPrograms = filterPrograms(programs, selectedGoals, [], []);
+    
+    // Filtering the available programs based on Selected Indicator Group
+    let selectedIndicator = filters['indicatorCategory']? filters['indicatorCategory']['value']: undefined;
+    selectedIndicator = selectedIndicator?[selectedIndicator]:[];
+    const selectedProgramName = filters.programName ? [filters.programName.value] : [];
+    const selectedOrganizations = filters.organizationName ? [filters.organizationName.value] : [];
 
-    const organizationNamesOptions = uniqueOrganizations(filteredPrograms).map(name => ({
+    // Filter the programs.csv 
+    const filteredPrograms = filterPrograms(programs, selectedGoals, selectedIndicator, selectedOrganizations , selectedProgramName );
+    
+    const organizationNamesOptions = uniq(filteredPrograms.map(d=>d["OrgName"])).sort().map(name => ({
+      label: name,
+      value: name
+    }));
+    // get unique indicator groups styled as array
+    const uniqueIndicatorGroups = uniq(filteredPrograms.map(p => p['IndicGrp']));
+    const indicatorCategoriesOptions = uniqueIndicatorGroups.sort().map(name => ({
       label: name,
       value: name
     }));
 
-    const indicatorCategoriesOptions = uniqueIndicators(filteredPrograms).map(name => ({
+    // Get programs
+    const uniquePrograms = uniq(filteredPrograms.map(p => p['ProgName']))
+    const programsCategoriesOptions =  uniquePrograms.sort().map(name => ({
       label: name,
       value: name
     }));
+
+    console.log( "Filtered Progs:" , filteredPrograms )
+
 
     return (
       <div className='Filters'>
         <div className='Filters-goals'>
-          <h2 className='Filter-goals-label'>Filter by Goal</h2>
+          {/* <h2 className='Filter-goals-label'>Filter by Goal</h2> */}
           <div className='Filters-goal-pickers'>
             {goals.map(goal => (
               <Goal
@@ -182,6 +205,7 @@ class Filters extends Component {
             ))}
           </div>
         </div>
+
         <div className='Filters-monitoring-status Filters-filter'>
           <h2 className='Filter-label'>Monitoring Status</h2>
           <div className='Filter-input'>
@@ -200,9 +224,10 @@ class Filters extends Component {
             </ul>
           </div>
         </div>
+
         <div className='Filters-indicator Filters-filter'>
           <label className='Filter-label'>
-            Indicator Category
+            Indicator Groups
             <button className='help-button' onClick={() => {
               showAboutModal();
               showAboutModalTab(1);
@@ -217,6 +242,7 @@ class Filters extends Component {
             options={indicatorCategoriesOptions}
           />
         </div>
+        
         <div className='Filters-organization Filters-filter'>
           <label className='Filter-label'>Organization Name</label>
           <FilterSelect
@@ -227,6 +253,18 @@ class Filters extends Component {
             options={organizationNamesOptions}
           />
         </div>
+
+        <div className='Filters-program Filters-filter'>
+          <label className='Filter-label'>Program Name</label>
+          <FilterSelect
+            value={filters.programName}
+            onChange={(option) => {
+              this.props.updateFilter('programName', option);
+            }}
+            options={programsCategoriesOptions}
+          />
+        </div>
+
       </div>
     );
   }

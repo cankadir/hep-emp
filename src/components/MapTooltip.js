@@ -19,27 +19,27 @@ class MapTooltip extends Component {
     }
 
     return (
-      <Tooltip
-        left={position.left - 10}
-        top={position.top + 20}
-      >
-        <div className='MapTooltip-section'>
-          <label className='MapTooltip-label'>
-            Organization
-          </label>
-          {mouseOverPrograms[0].OrgName}
-        </div>
-        <div className='MapTooltip-section'>
-          <label className='MapTooltip-label'>
-            Indicator Groups
-          </label>
-          {mouseOverPrograms[0].IndicGrp}
-        </div>
-        <div className='MapTooltip-more'>
-          Click site for more information
-        </div>
+      <Tooltip left={position.left - 10} top={position.top + 20}>
+        {mouseOverPrograms.length > 0 && (
+          <>
+            <div className='MapTooltip-section'>
+              <label className='MapTooltip-label'>Organization</label>
+              {mouseOverPrograms[0].OrgName}
+            </div>
+            <div className='MapTooltip-section'>
+              <label className='MapTooltip-label'>Indicator Groups</label>
+              {mouseOverPrograms[0].IndicGrp}
+            </div>
+            <div className='MapTooltip-more'>
+              Click site for more information
+            </div>
+          </>
+        )}
       </Tooltip>
     );
+
+
+
   }
 }
 
