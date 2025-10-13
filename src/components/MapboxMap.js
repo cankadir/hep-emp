@@ -46,7 +46,6 @@ class Map extends Component {
     });
 
     const selectedGoals = Object.keys(nextFilters.goals).filter(key => nextFilters.goals[key]);
-    console.log( "Filters" , nextFilters );
 
     // Filter by prorgram
     const programs = filterPrograms(
@@ -57,9 +56,6 @@ class Map extends Component {
       nextFilters.programName ? [nextFilters.programName.value]: [] ,
     );
 
-    console.log( "handle update 1:" ,programs )
-
-  
     // Update layer styles by goal
     if (selectedGoals.length > 0) {
       const fullSelectedGoals = goals.filter(g => selectedGoals.indexOf(g.filterValue) >= 0);

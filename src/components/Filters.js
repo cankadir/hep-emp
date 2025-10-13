@@ -187,8 +187,7 @@ class Filters extends Component {
       value: name
     }));
 
-    console.log( "Filtered Progs:" , filteredPrograms )
-
+    // console.log( "Filtered Progs:" , filteredPrograms )
 
     return (
       <div className='Filters'>
