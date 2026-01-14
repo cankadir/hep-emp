@@ -49,19 +49,17 @@
 }
 
 .Filters-goal-name {
-  color: black;
+  // color: black;
   font-size: 13px;
   line-height: 17px;
   margin-top: 4px;
   text-align: center;
 }
 
-.Filters-goal:hover,
-.Filters-goal.active {
+.Filters-goal {
   .Filters-goal-name {
     font-weight: bold;
   }
-
   &.water-quality .Filters-goal-name {
     color: $water-quality;
   }

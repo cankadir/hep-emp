@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { Component } from 'react';
 import slug from 'slug';
 
-import { filterPrograms } from '../models/programs';
+import { filterPrograms, uniqueIndicators, uniqueOrganizations } from '../models/programs';
 import FilterSelect from './FilterSelect';
 import Tooltip from './Tooltip';
 import './Filters.scss';
@@ -154,7 +154,7 @@ class Filters extends Component {
   }
 
   render() {
-    const { filters, programs, scrollToModalSection, showAboutModal, showAboutModalTab } = this.props;
+    const { filters, programs } = this.props;
     const filteredGoals = filters.goals;
     const filteredMonitoringStatuses = filters.monitoringStatuses;
 
@@ -163,19 +163,18 @@ class Filters extends Component {
     // Filtering the available programs based on Selected Indicator Group
     let selectedIndicator = filters['indicatorCategory']? filters['indicatorCategory']['value']: undefined;
     selectedIndicator = selectedIndicator?[selectedIndicator]:[];
+
     const selectedProgramName = filters.programName ? [filters.programName.value] : [];
     const selectedOrganizations = filters.organizationName ? [filters.organizationName.value] : [];
 
-    // Filter the programs.csv 
     const filteredPrograms = filterPrograms(programs, selectedGoals, selectedIndicator, selectedOrganizations , selectedProgramName );
     
-    const organizationNamesOptions = uniq(filteredPrograms.map(d=>d["OrgName"])).sort().map(name => ({
+    const organizationNamesOptions = uniqueOrganizations(filteredPrograms).map(name => ({
       label: name,
       value: name
     }));
-    // get unique indicator groups styled as array
-    const uniqueIndicatorGroups = uniq(filteredPrograms.map(p => p['IndicGrp']));
-    const indicatorCategoriesOptions = uniqueIndicatorGroups.sort().map(name => ({
+
+    const indicatorCategoriesOptions = uniqueIndicators(filteredPrograms).map(name => ({
       label: name,
       value: name
     }));
@@ -186,8 +185,6 @@ class Filters extends Component {
       label: name,
       value: name
     }));
-
-    // console.log( "Filtered Progs:" , filteredPrograms )
 
     return (
       <div className='Filters'>
@@ -227,11 +224,11 @@ class Filters extends Component {
         <div className='Filters-indicator Filters-filter'>
           <label className='Filter-label'>
             Indicator Groups
-            <button className='help-button' onClick={() => {
+            {/* <button className='help-button' onClick={() => {
               showAboutModal();
               showAboutModalTab(1);
               scrollToModalSection('indicator-categories');
-            }}>?</button>
+            }}>?</button> */}
           </label>
           <FilterSelect
             value={filters.indicatorCategory}

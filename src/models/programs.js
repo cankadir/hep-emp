@@ -61,8 +61,8 @@ export function getProgramsByGoal(programs, goal) {
 }
 
 export function filterPrograms(programs, goals, indicators, organizations, programNames = []) {
-
   const filteredPrograms = programs.filter(program => {
+
     if (goals.length && program.goals.filter(goal => goals.indexOf(goal) >= 0).length === 0) {
       return false;
     }
@@ -78,6 +78,5 @@ export function filterPrograms(programs, goals, indicators, organizations, progr
 
     return true;
   });
-
   return filteredPrograms;
 }

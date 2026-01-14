@@ -56,8 +56,6 @@ class Map extends Component {
       nextFilters.programName ? [nextFilters.programName.value]: [] ,
     );
 
-    console.log( programs );
-
     // Update layer styles by goal
     if (selectedGoals.length > 0) {
       const fullSelectedGoals = goals.filter(g => selectedGoals.indexOf(g.filterValue) >= 0);

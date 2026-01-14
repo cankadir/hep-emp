@@ -10,7 +10,7 @@ import waterQualityActive from './img/water-quality-active.svg';
 import waterQualityInactive from './img/water-quality-inactive.svg';
 
 export const organizationName = 'NY-NJ Harbor & Estuary';
-export const projectName = 'Environmental Monitoring Sites';
+export const projectName = 'Environmental monitoring sites';
 export const programDatabaseUrl = 'https://docs.google.com/spreadsheets/d/1k3D3xxKq3zxOnzCUhFOPT5jdkwoAFdWKr0OSm14BHXY/edit#gid=0';
 
 export const hepLink = 'https://www.hudsonriver.org/estuary-program';

@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   render() {
-    const { aboutModal } = this.props;
+    // const { aboutModal } = this.props;
     return (
       <div className="App">
         <Sidebar/>
