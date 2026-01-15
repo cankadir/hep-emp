@@ -2,7 +2,7 @@
   "name": "hep-emp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.hudsonriver.org/hep-emp/",
+  "homepage": ".",
   "dependencies": {
     "classnames": "^2.2.6",
     "core-js": "^3.1.4",

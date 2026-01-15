@@ -31,7 +31,7 @@ export const mapbox = {
     },
     monitoringPointsNonActive: {
       name: 'monitoring-points-non-active-icons',
-      defaultFilter: ['all', ['in', 'Legend', 'Historic/Nonactive']],
+      defaultFilter: ['all', ['in', 'Legend', 'Non-Active']],
       goalStyleFields: []
     },
     monitoringPointsContinuous: {
@@ -45,7 +45,7 @@ export const mapbox = {
       goalStyleFields: ['fill-color']
     }
   },
-  styleUrl: 'mapbox://styles/hudsonrf/cjms1gyqra6172smzt8x1mfg3'
+  styleUrl: 'mapbox://styles/hudsonrf/cmiorjzzw00a701s756cm31zz'
 };
 
 export const initialMap = {
@@ -131,7 +131,7 @@ export const monitoringStatuses = [
   },
   {
     label: 'Historical / Non-Active',
-    filterValue: 'Historic/Nonactive',
+    filterValue: 'Non-Active',
     layers: ['monitoring-points-non-active-icons'],
     defaultMapIcon: 'triangle-default',
     tooltip: 'Sites that are no longer monitored',

@@ -1,5 +1,5 @@
 import { csvParse } from 'd3-dsv';
-import programsCsv from '../data/programs.csv';
+import programsCsv from '../data/250114_programs.csv';
 import contentDescriptors from '../models/content';
 
 export const setClickedFeatures = (clickedFeatures) => ({
