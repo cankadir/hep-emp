@@ -31,4 +31,7 @@ Use NVM to downgrade node version to 16
 nvm list
 nvm use 16.20.0
 npm start
-```
+```  
+
+Updates to the document is on the `updates-2510` branch. This branch is temporarily deployed to the Github pages at: https://cankadir.github.io/hep-emp/  
+Pages is deployed from `/docs` build is ignored to not updated the pages deployment at each build. 
